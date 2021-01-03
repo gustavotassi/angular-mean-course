@@ -31,4 +31,19 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
   }
 
+  verifyContent(content: string): any {
+    if (this.panelOpenState) {
+      return '';
+    } else {
+      if (content.length > 45) {
+        return content.substring(0, 45) + '...';
+      } else {
+        return content;
+      }
+    }
+  }
+
+  onDelete(id: string) {
+    this.postsService.deletePost(id);
+  }
 }
